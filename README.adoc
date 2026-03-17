@@ -1,0 +1,187 @@
+= Employee Management System
+:author: Clément
+:revnumber: 1.0.0
+:toc: left
+:toclevels: 3
+:icons: font
+:source-highlighter: highlight.js
+:sectnums:
+
+image:https://img.shields.io/badge/.NET-9.0-512bd4[link="https://dotnet.microsoft.com/download/dotnet/9.0"]
+image:https://img.shields.io/badge/Architecture-REST_HATEOAS-blue[]
+image:https://img.shields.io/badge/Database-In--Memory-green[]
+
+== 📝 Project Overview
+
+This is a professional-grade full-stack application. It features a robust ASP.NET Core 9.0 backend for managing employee records, implementing a manual HATEOAS (Hypermedia as the Engine of Application State) pattern to provide a truly discoverable API.
+
+The project demonstrates clean architecture principles, including the Repository Pattern, DTO mapping with AutoMapper, and a decoupled frontend/backend structure.
+
+== 🚀 Key Features
+
+Full CRUD Operations: Create, Read, Update, and Delete employees.
+
+Manual HATEOAS Implementation: Every response includes navigational links for a self-documenting API.
+
+DTO Pattern: Separation of concerns between database models and API contracts.
+
+AutoMapper Integration: Efficient object-to-object mapping with custom member ignoring for safety.
+
+Entity Framework Core: Using In-Memory provider for rapid development and testing.
+
+Swagger/OpenAPI: Interactive documentation and testing UI included.
+
+== 🛠 Tech Stack
+
+[cols="1,3"]
+|===
+| Component | Technology
+
+| Backend
+| .NET 9.0 (ASP.NET Core)
+
+| Frontend
+| Angular 19+
+
+| ORM
+| Entity Framework Core 9.0
+
+| Mapping
+| AutoMapper 13.0
+
+| Documentation
+| Swagger / AsciiDoc
+|===
+
+== 📂 Project Structure
+
+The repository is structured as a monorepo for ease of development and deployment:
+
+[source,json]
+
+{ 
+    "root": { 
+        "files": [ 
+            "EmployeeManagement.sln", 
+            "README.adoc", 
+            ".gitignore" 
+        ], 
+        "directories": { 
+            "EmployeeManagement": { 
+                "description": "ASP.NET Core Web API Project", 
+                "sub-dirs": [ 
+                    "Controllers", 
+                    "Models", 
+                    "Repositories", 
+                    "Profiles", 
+                    "Data" 
+                ] 
+            }, 
+            "frontend": { 
+                "description": "Angular 19 Application", 
+                "status": "In Development" 
+            } 
+        } 
+    } 
+}
+
+== 🛡 Git Hygiene
+
+The project includes a unified .gitignore file at the root. This file is configured to:
+
+Exclude .NET artifacts: bin/, obj/, .vs/, and user.config files.
+
+Exclude Angular artifacts: node_modules/, dist/, .angular/, and build logs.
+
+Protect Environment Data: Ignores .env and local secrets files.
+
+== 📐 Architecture
+
+The backend follows a layered architecture to ensure maintainability:
+
+Controllers: Handle HTTP requests and orchestrate HATEOAS link generation.
+
+Repositories: Encapsulate data access logic using Entity Framework.
+
+Models: POCOs representing the database schema.
+
+DTOs: Specialized objects for API responses, preventing over-exposure of internal data.
+
+== 🔗 HATEOAS Example
+
+When you fetch an employee, the API returns the data along with navigational links:
+
+[source,json]
+{ 
+    "id": 5, 
+    "firstName": "Clément", 
+    "lastName": "Dev", 
+    "phone": "0600000000", 
+    "position": "Software Architect", 
+    "links": [ 
+        { 
+            "href": "https://localhost:7204/api/employee/5", 
+            "rel": "self", 
+            "method": "GET" 
+        }, 
+        { 
+            "href": "https://localhost:7204/api/employee/5", 
+            "rel": "update_employee", 
+            "method": "PUT" 
+        } 
+    ] 
+}
+
+
+== 🚦 Getting Started
+
+=== Prerequisites
+
+.NET 9 SDK
+
+Node.js (Latest LTS) & Angular CLI (npm install -g @angular/cli)
+
+A code editor (VS Code, Visual Studio 2022, or JetBrains Rider)
+
+=== Installation
+
+. Clone the repository: [source,bash]
+
+```bash
+git clone https://github.com/dev-clement/EmployeeManagement.git
+```
+
+. Restore Backend dependencies: [source,bash]
+
+```bash
+dotnet restore
+```
+
+. Build the solution: [source,bash]
+
+```bash
+dotnet build
+```
+
+. Run the API: [source,bash]
+
+```bash
+dotnet run --project EmployeeManagement
+```
+
+. Open Swagger UI:
+Navigate to https://localhost:7204/index.html to test the endpoints.
+
+. Install Frontend dependencies: [source,bash]
+
+```bash
+cd frontend npm install
+```
+
+== 🤝 Contributing
+
+Feel free to fork this project, create a feature branch, and submit a Pull Request.
+
+== 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
