@@ -1,0 +1,63 @@
+= EmployeeManagement - Frontend (Angular)
+:toc: left
+:icons: font
+:source-highlighter: highlight.js
+
+Welcome to the frontend of the *EmployeeManagement* system. This application is a modern, reactive dashboard built with *Angular 18.2.21*.
+
+== 🚀 Overview
+
+This frontend application serves as the user interface for the Employee Management project. It is specifically designed to communicate with a backend API implemented in *ASP.NET Core*.
+
+=== Key Features
+* *Modern Dashboard:* Responsive UI built with Tailwind CSS.
+* *Employee Management:* Full CRUD capabilities.
+* *Reactive State:* Uses Angular *Signals* for high-performance updates.
+* *Search & Filtering:* Real-time filtering logic.
+
+== 🛠 Prerequisites
+
+Before you begin, ensure you have the following installed:
+* Node.js (v18.x or later)
+* Angular CLI (`npm install -g @angular/cli`)
+
+== 🏁 Getting Started
+
+=== 1. Clone the Repository
+[source,bash]
+----
+git clone https://github.com/dev-clement/EmployeeManagement.git
+cd EmployeeManagement
+----
+
+=== 2. Install Dependencies
+[source,bash]
+----
+npm install
+----
+
+=== 3. Development Server
+Run the following command for a local dev server:
+[source,bash]
+----
+ng serve
+----
+Navigate to `http://localhost:4200/`.
+
+== 🔗 Backend Integration
+
+This application consumes the *ASP.NET Core API*.
+
+[IMPORTANT]
+====
+Ensure your backend server is running before attempting to fetch live data.
+====
+
+== 🏗 Build & Deployment
+
+To build the project for production:
+[source,bash]
+----
+ng build --configuration production
+----
+The build artifacts will be stored in the `dist/` directory.
