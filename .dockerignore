@@ -1,0 +1,28 @@
+**/bin/
+**/obj/
+**/dist/
+**/node_modules/
+.git/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln.docstates
+
+Exclude local development settings and properties
+
+Properties/
+launchSettings.json
+appsettings.Development.json
+appsettings.Local.json
+
+Docker specific
+
+.dockerignore
+Dockerfile
+
+OS artifacts
+
+.DS_Store
+Thumbs.db
