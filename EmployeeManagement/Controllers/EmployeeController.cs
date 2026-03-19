@@ -50,6 +50,11 @@ namespace EmployeeManagement.Controllers
         [HttpPost]
         public async Task<ActionResult<EmployeeDTO>> CreateEmployee(Employee employee)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             await _employeeRepository.AddEmployeeAsync(employee);
 
             var dto = _mapper.Map<EmployeeDTO>(employee);
@@ -65,6 +70,12 @@ namespace EmployeeManagement.Controllers
             {
                 return BadRequest($"The id {id} is not present in the database !");
             }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             try
             {
                 await _employeeRepository.UpdateEmployeeAsync(id, lhs);
