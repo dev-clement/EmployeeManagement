@@ -55,3 +55,6 @@ IDE and OS
 .history/
 .ionide/
 .net/
+
+Build artifacts
+package-lock.json
